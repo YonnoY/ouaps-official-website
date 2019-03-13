@@ -1,0 +1,26 @@
+ErrorDocument 404 /pages/404.html
+Options -Indexes
+
+RewriteEngine on
+# RewriteRule events/$ pages/events.html
+RewriteRule about/$ pages/about.html
+RewriteRule about$ pages/about.html
+RewriteRule events/$ pages/events.html
+RewriteRule events$ pages/events.html
+RewriteRule speakers/$ pages/speakers.html
+RewriteRule speakers$ pages/speakers.html
+
+RewriteRule join$ http://eepurl.com/dd0BLX
+RewriteRule join/$ http://eepurl.com/dd0BLX
+
+RewriteRule stars/$ pages/stars2017.html
+RewriteRule stars$ pages/stars2017.html
+RewriteRule stars2017/$ pages/stars2017.html
+RewriteRule stars2017$ pages/stars2017.html
+RewriteRule stars2017-redirect/$ pages/stars2017-redirect.html
+RewriteRule stars2017-redirect$ pages/stars2017-redirect.html
+RewriteRule stars2017-transport$ https://docs.google.com/forms/d/e/1FAIpQLSfAeI7oRsDOaBG7jeh5VFa4jw5uej-Ou04F9pNf-F7eck8erA/viewform
+RewriteRule stars2017-transport/$ https://docs.google.com/forms/d/e/1FAIpQLSfAeI7oRsDOaBG7jeh5VFa4jw5uej-Ou04F9pNf-F7eck8erA/viewform
+
+RewriteRule jade2018$ pages/jade2018.html
+RewriteRule jade2018/$ pages/jade2018.html

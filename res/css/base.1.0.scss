@@ -1,0 +1,1188 @@
+/** Variables
+ ---------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+$primary: 		#002147;
+$primary-light: #4891DC;
+$accent: 		#1E8576;
+$accent-light: 	#FFD179;
+$blue-grey: 	#263238;
+
+$faded-black: rgba(0, 0, 0, 0.58);
+$dark-black: rgba(0, 0, 0, 0.83);
+
+$font-black: 		rgba(0,0,0,.83);
+$font-black-light: 	rgba(0,0,0,.54);
+$font-white: 		rgba(255,255,255,.87);
+$font-white-light: 	rgba(255,255,255,.54);
+
+$break-large: 1281px;
+$break-medium: 425px;
+
+/** Animations
+ ---------------------------------------------------------*/
+
+@mixin transform($transforms) {
+  transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -moz-transform: $transforms;
+  -webkit-transform: $transforms;
+}
+
+@mixin transition($transition) {
+  transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  -moz-transition: $transition;
+  -webkit-transition: $transition;
+}
+
+@mixin animation($animate) {
+  -webkit-animation: $animate;
+  -moz-animation: $animate;
+  -o-animation: $animate;
+  animation: $animate;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@include keyframes(chevron-translation) {
+	from {@include transform(translateY(-0.25rem))}
+	to {@include transform(translateY(0.25rem))}
+}
+
+.smooth {
+  @include transition(all 300ms);
+}
+
+.fade-on-hover {
+  @extend .smooth;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.reverse-fade-on-hover {
+  @extend .smooth;
+  opacity: 0.8;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+/** Base
+ ---------------------------------------------------------*/
+
+html {
+	font-size: 1.25vw;
+	font-family: "Open Sans", Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	color: $font-black;
+	line-height: 1.25;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		font-size: 4vw;
+	}
+	
+	@media (min-width: $break-large) {
+		font-size: 16px;
+	}
+	
+	background: #F6F6F6;
+}
+
+body {
+	margin: 0;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 2.5rem;
+}
+
+h2 {
+	@extend h1;
+	font-size: 1.5rem;
+}
+
+p {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	
+	a {
+		@extend .fade-on-hover;
+		border-bottom: 1px solid currentcolor;
+	}
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/** Modal
+ ---------------------------------------------------------*/
+
+.modal {
+	@extend .smooth;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.50);
+	opacity: 0;
+	pointer-events: none;
+	
+	&:target {
+		pointer-events: all;
+		opacity: 1;
+	}
+	
+	.card {
+		position: relative;
+		background: white;
+		border-radius: 2rem;
+		width: 20rem;
+		height: 40rem;
+		max-height: 80%;
+		max-width: 80%;
+		overflow: hidden;
+	}
+}
+
+/** Units
+ ---------------------------------------------------------*/
+
+.section {
+	@extend .center;
+	position: relative;
+	height: 93.75vh;
+	width: 100%;
+	max-width: $break-large;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	box-sizing: border-box;
+	background: white;
+	overflow: hidden;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		flex-direction: column-reverse;
+    }
+	
+	@media (min-width: $break-medium) and (orientation: portrait) {
+		height: 50vh;
+	}
+	
+	@media (min-width: $break-large) {
+		height: 750px;
+	}
+}
+
+.l-1-3 {
+	width: percentage(1/3);
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		width: 100%
+    }
+}
+
+.l-1-2 {
+	width: percentage(1/2);
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		width: 100%
+    }
+}
+
+.l-2-3 {
+	width: percentage(2/3);
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		width: 100%
+    }
+}
+
+@media (max-width: $break-medium) and (orientation: portrait) {	
+
+	.h-1-3-s {
+		height: percentage(1/3) !important;
+	}
+	
+	.h-2-3-s {
+		height: percentage(2/3) !important;
+	}
+	
+	.text {
+		padding: 1.5rem;
+		box-sizing: border-box;
+	}
+	
+	.o-1-s {
+		order: 1;
+	}
+	
+	.o-2-s {
+		order: 2;
+	}
+	
+}
+
+.blue-bg {
+	background: $primary;
+	color: $font-white;
+}
+
+.accent-bg {
+	background: $accent;
+	color: $font-white;
+}
+
+.primary-light-bg {
+	background: $primary-light;
+	color: $font-white;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+.button {
+	@extend .smooth, p;
+	display: inline-block;
+	color: $accent;
+	text-decoration: none;
+	padding: 0.25rem;
+	cursor: pointer;
+	border-bottom: 2px solid;
+	float: right;
+	margin: 1rem;
+
+  &::after {
+    @extend .smooth;
+    content: '\203A';
+    margin-left: 1rem;
+    font-size: 110%;
+  }
+
+  &:hover {
+  	padding: 0.25rem 0.1rem 0.25rem 0.4rem;
+  }
+
+  &:active {
+    padding: 0.25rem 0 0.25rem 0.5rem;
+  }
+}
+
+.auto-height {
+	height: auto;
+}
+
+@media (max-width: $break-medium) and (orientation: portrait) {
+	.m-auto-height {
+		height: auto;
+	}
+}
+
+.caption {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 0.5rem 1rem;
+	color: $font-white;
+	margin: 1rem;
+	font-size: 1rem;
+	font-weight: 300;
+	border: 1px solid currentcolor;
+	border-radius: 0.25rem;
+	
+	p {
+		line-height: 2;
+		margin: 0;
+	}
+}
+
+.small {
+	font-size: 0.75em;
+	line-height: 1.5 !important;
+}
+
+.small-padding {
+	padding: 2rem;
+}
+
+.vertical-direction {
+	flex-direction: column;
+	justify-content: center;
+}
+
+.reverse {
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		flex-direction: column;
+    }
+}
+
+/** Navigation
+ ---------------------------------------------------------*/
+
+#menu-banner {
+	@extend .smooth;
+	height: 95px;
+	width: 75px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	background: $faded-black;
+	font-size: 0.48px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+	z-index: 999;
+	color: white;
+
+  &:hover #menu-icon {
+    width: 70em;
+  }
+
+  p {
+    text-transform: uppercase;
+    font-size: 25em;
+    letter-spacing: 0.08em;
+  }
+	
+	&.open {
+		top: 33vh;
+		@media (max-width: $break-medium) and (orientation: portrait) {
+			top: 70vh;
+		}
+	}
+	
+	@media (min-width: $break-large) {
+		right: calc(50% - 640px);
+	}
+}
+
+#menu-icon {
+  width: 30px;
+  height: 22.5px;
+  position: relative;
+  margin: 32px auto 0 auto;
+  @include transform(rotate(0deg));
+  @include transition(.1s ease-in-out);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    @include transform(rotate(0deg));
+    @include transition(.25s ease-in-out);
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2), &:nth-child(3) {
+      top: 9px;
+    }
+
+    &:nth-child(4) {
+      top: 18px;
+    }
+  }
+
+  &.open {
+
+    span:nth-child(1) {
+      top: 9px;
+      width: 0%;
+      left: 50%;
+    }
+
+    span:nth-child(2) {
+      @include transform(rotate(45deg));
+    }
+
+    span:nth-child(3) {
+      @include transform(rotate(-45deg));
+    }
+
+    span:nth-child(4) {
+      top: 9px;
+      width: 0%;
+      left: 50%;
+    }
+  }
+}
+
+#navigation {
+	@extend .smooth;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 0;
+	width: 100%;
+	display: flex;
+	padding: 0 calc(8% - 1rem);
+	justify-content: space-between;
+	align-items: center;
+	background: $accent;
+	color: white;
+	box-sizing: border-box;
+	overflow: hidden;
+	z-index: 900;
+	max-width: 1280px;
+	margin: 0;
+
+  &.open {
+    height: 33vh;
+  }
+
+  a {
+    @extend h1, .reverse-fade-on-hover;
+    display: block;
+    margin: 0 2rem;
+    padding: 1rem;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.00);
+
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+	
+	@media (min-width: $break-large) {
+		margin: 0 calc(50% - 640px);
+	}
+
+  @media (max-width: $break-medium) and (orientation: portrait) {
+    flex-direction: column;
+	  justify-content: space-around;
+	  a {
+		  font-size: 1.5rem;
+	  }
+
+    &.open {
+      height: 70vh;
+    }
+
+  }
+}
+
+.nav-bar{
+	@extend .smooth;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height: 40px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	background: rgba(0,0,0,0.7);
+	padding: 0 10rem;
+	box-sizing: border-box;
+	opacity: 0.8;
+	
+	& *{
+		@extend .fade-on-hover;
+		margin: 0 1.5rem;
+	}
+	
+	.nav-logo {
+		height: 48px;
+		width: 48px;
+		background: url(../img/logo/tiger-icon-white.svg) no-repeat center/60%;
+	}
+	
+	.nav-item {
+		font-size: 0.875em;
+		font-weight: 300;
+		color: white;
+		padding: 2px;
+		
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+
+	&:hover{
+		opacity: 1;
+	}
+}
+
+/** Footer
+ ---------------------------------------------------------*/
+
+.footer {
+	height: 25rem;
+	color: $font-white-light;
+	
+	.button {
+		border: 0;
+		color: $font-white-light !important;
+		display: block;
+		float: none;
+		margin: 0;
+		padding-left: 0;
+		
+		&:hover {
+			padding-left: 0.1rem;
+		}
+	}
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		height: auto;
+	}
+}
+
+/** Pages
+ ---------------------------------------------------------*/
+
+.splash-header {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	background: white;
+	padding: 5%;
+	box-sizing: border-box;
+	
+	h1 {
+		width: auto !important;
+		margin: auto auto;
+		font-size: 6rem;
+		color: $primary;
+	}
+}
+
+.accent-bg {
+	background: $accent;
+	color: $font-white;
+	
+	.button {
+		color: white;
+	}
+}
+
+/** Homepage
+ ---------------------------------------------------------*/
+
+.splash-primary-logo-white {
+	position: relative;
+	height: 100%;
+	background: $primary url(../img/logo/primary-logo-white.svg) no-repeat center/70%;
+	
+	.animated-chevron {
+		position: absolute;
+		height: 0.75rem;
+		width: 100%;
+		margin: 0 auto;
+		background: url(../img/homepage/chevron-down.svg) no-repeat center/auto;
+		opacity: 0.8;
+		bottom: 10%;
+		@include animation(chevron-translation alternate 1s ease-in-out infinite);
+	}
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		background: $primary url(../img/logo/primary-logo-horizontal-white.svg) no-repeat center/70%;
+    }
+}
+
+.splash-primary-logo-black {
+	position: relative;
+	height: 100%;
+	background: url(../img/logo/primary-logo-black.svg) no-repeat center/50%;
+	opacity: 0.5;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		background-size: 40%;
+	}
+}
+
+.splash-hero-image {
+	height: 100%;
+	background: url(../img/homepage/splash-1.jpg) no-repeat center/cover;
+}
+
+.about {
+	background: white url(../img/homepage/apac-map.svg) no-repeat left top/auto 100%;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		background: white url(../img/homepage/apac-map.svg) no-repeat center top/100%;
+	}
+}
+
+.join {
+	@extend .section;
+	justify-content: center;
+	flex-direction: column;
+	box-shadow: 0 1px 8px rgba(0,0,0,.3);
+	
+	padding: 3rem 1rem 4rem 1rem;
+	text-align: center;
+}
+
+.join-form {
+	position: relative;
+	width: auto;
+	margin-top: 2rem;
+
+	input[type=email] {
+		width: 35rem;
+		height: 3rem;
+		background: rgba(0,0,0,0.3);
+		border: 0;
+		outline: none;
+		color: currentColor;
+		padding: 0.25rem 1rem;
+		font-size: 1rem;
+	}
+
+	input[type=email]::placeholder {
+		color: $font-white-light;
+	}
+
+	input[type=submit] {
+		@extend .fade-on-hover;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 3.5rem;
+		width: 3.5rem;
+		background: url(../img/icon/send.svg) no-repeat center/40%;
+		border: 0;
+		outline: none;
+		opacity: 0.8;
+	}
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		input[type=email] {
+			width: 20rem;
+		}
+	}
+
+}
+
+.join-form-half {
+	input[type=email] {
+		width: 24rem;
+		
+		@media (max-width: $break-medium) and (orientation: portrait) {
+			width: 20rem;
+		}
+	}
+}
+
+.join-image {
+	height: 100%;
+	background: black url(../img/logo/tiger-seal-white.svg) no-repeat center/70%;
+}
+
+.events-image {
+	position: relative;
+	height: 100%;
+	background: url(../img/homepage/splash-2.jpg) no-repeat center/cover;
+}
+
+/** About
+ ---------------------------------------------------------*/
+
+.about-team {
+	align-items: flex-start;
+	justify-content: space-evenly;
+	align-items: stretch;
+	flex-wrap: wrap;
+	padding-bottom: 5rem;
+	
+	.member {
+		width: 26vw;
+		height: auto;
+		margin-top: 2rem;
+		
+		img {
+			width: 100%;
+		}
+		
+		.placeholder {
+			width: 100%;
+			height: 26vw;
+			background: $primary url(../img/logo/tiger-seal-white.svg) no-repeat center/70%;
+		}
+		
+		p {
+			margin-bottom: 0.25rem;
+		}
+		
+		a {
+			font-size: 0.75em;
+			text-decoration: underline;
+		}
+	}
+	
+	.join-our-committee {
+		@extend .member;
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		flex-direction: column;
+		border: 1px solid $accent;
+		color: $accent;
+		padding: 1.5rem;
+		box-sizing: border-box;
+		
+		a {
+			font-size: 1em;
+			text-decoration: none;
+		}
+		
+		@media (max-width: $break-medium) and (orientation: portrait) {	
+			width: 90% !important;
+		}
+	}
+	
+	.about-header {
+		width: 100%;
+		text-align: center;
+		padding: 2rem;
+	}
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {	
+		flex-direction: row;
+		
+		.member {
+			width: 40%;
+			
+			.placeholder {
+				height: 40vw;
+			}
+		}
+	}
+}
+
+.about-splash-1 {
+	height: 100%;
+	background: url(../img/about/splash-1.jpg) no-repeat center/cover;
+}
+
+/** Events
+ ---------------------------------------------------------*/
+
+.events-image-boat-party {
+	position: relative;
+	height: 100%;
+	background: url(../img/events/boat-party.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.events-image-food-festival {
+	position: relative;
+	height: 100%;
+	background: url(../img/events/food-festival.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.events-image-formals {
+	position: relative;
+	height: 100%;
+	background: url(../img/events/formals.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.events-image-parties-socials {
+	position: relative;
+	height: 100%;
+	background: url(../img/events/parties-socials.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.events-image-speakers {
+	position: relative;
+	height: 100%;
+	background: url(../img/speakers/lang-lang.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+/** Speakers
+ ---------------------------------------------------------*/
+
+.speakers-image {
+	position: relative;
+	height: 100%;
+	background: url(../img/speakers/jose-ramos-horta.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.speakers-image-2 {
+	position: relative;
+	height: 100%;
+	background: url(../img/speakers/fang-long-shih.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.speakers-image-3 {
+	position: relative;
+	height: 100%;
+	background: url(../img/speakers/david-tang.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.speakers-image-4 {
+	position: relative;
+	height: 100%;
+	background: url(../img/speakers/lang-lang.jpg) no-repeat center/cover;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 40vh;
+	}
+}
+
+.speakers {
+	display: flex;
+	justify-content: flex-start;
+	align-content: center;
+	flex-direction: row;
+	padding: 2rem;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	
+	h1 {
+		width: 100%;
+		margin: 0.5rem;
+	}
+	
+	height: 100%;
+
+}
+
+.speaker-box {
+	display: inline-block;
+	border: 1px solid currentcolor;
+	border-radius: 5px;
+	padding: 0.5rem;
+	margin: 0.5rem;
+	max-width: 40%;
+	flex: 1 20%;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		flex: 1 30%;
+	}
+	
+	h1 {
+		font-size: 1em;
+		margin: 0 0 0.5rem 0;
+	}
+	
+	p {
+		font-size: 0.75em;
+		margin: 0;
+		opacity: 0.8;
+	}
+}
+
+/** City of Stars
+ ---------------------------------------------------------*/
+
+$cos-velvet:		#201626;
+$cos-velvet-light:	#271D2C;
+$cos-pink:			#E53F6F;
+$cos-pink-light:	#FDD4D9;
+$cos-beige:			#F6EEE6;
+$cos-beige-pink:	#F9E4E1;
+
+.cos {
+	.section{
+		h1 {
+			font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+		}
+
+		.photo-1 { background: url(../img/events/city-of-stars/photos/1.jpg) no-repeat center/cover;height:100%}
+		.photo-2 { background: url(../img/events/city-of-stars/photos/2.jpg) no-repeat center/cover;height:100%}
+		.photo-3 { background: url(../img/events/city-of-stars/photos/3.jpg) no-repeat center/cover;height:100%}
+		.photo-4 { background: url(../img/events/city-of-stars/photos/4.jpg) no-repeat center/cover;height:100%}
+		.photo-5 { background: url(../img/events/city-of-stars/photos/5.jpg) no-repeat center/cover;height:100%}
+		.photo-6 { background: url(../img/events/city-of-stars/photos/6.jpg) no-repeat center/cover;height:100%}
+		.photo-casino { background: url(../img/events/city-of-stars/photos/casino.jpg) no-repeat center/cover;height:100%}
+
+		.button {
+			color: $cos-pink;
+		}
+	}
+	
+	.footer {
+		background: $cos-velvet;
+	}
+	
+	background: #333 !important;
+}
+
+.cos-splash {
+	flex-direction: column;
+	justify-content: space-between;
+	background: $cos-velvet url(../img/events/city-of-stars/logos/pattern-dark.svg) repeat center/4rem;
+	
+	.cos-splash-logo {
+		width: 100%;
+		height: 50rem;
+		margin: auto 0 auto 3rem;
+		background: url(../img/events/city-of-stars/logos/primary-logo-light.svg) no-repeat center;
+		
+		@media (max-width: $break-medium) and (orientation: portrait) {
+			width: 30rem;
+		}
+	}
+	
+	.cos-splash-subtitle {
+		width: 90%;
+		height: 5rem;
+		background: url(../img/events/city-of-stars/logos/subtitle-light.svg) no-repeat center;
+	}
+	
+	p {
+		color: $cos-pink-light;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 0.25rem;
+		font-size: 0.75rem;
+		opacity: 0.6;
+		text-align: center;
+	}
+}
+
+.cos-ticket {
+	@extend .fade-on-hover;
+	height: 15rem;
+	background: $cos-pink-light url(../img/events/city-of-stars/get-tickets-now.svg) no-repeat center/contain;
+	background-origin: content-box;
+	padding: 2.5rem 2.5rem 2.5rem 5.5rem;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 100vw;
+		background: $cos-pink-light url(../img/events/city-of-stars/get-tickets-now-horizontal.svg) no-repeat center/contain;
+		background-origin: content-box;
+		padding: 1rem;
+	}
+}
+
+.cos-pink-bg {
+	background-color: $cos-pink;
+	color: $cos-velvet;
+}
+
+.cos-beige-bg {
+	background-color: $cos-beige;
+	color: $cos-velvet;
+}
+
+.cos-redirect {
+	height: auto;
+	
+	a {
+		@extend .fade-on-hover;
+		padding: 20vh 4rem;
+		text-align: center;
+		
+		&:nth-child(1) {
+			background: $cos-pink-light;
+		}
+		&:nth-child(2) {
+			background: $cos-beige;
+		}
+	}
+}
+
+/** Jade
+ ---------------------------------------------------------*/
+
+$jade-mint:		#28A382;
+$jade-dark:		#182d13;
+$jade-light:	#ecf9e8;  
+
+.jade {
+	
+	.section{
+		h1 {
+			font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+		}
+
+		.photo-1 { background: url(../img/events/jade/photos/1.jpg) no-repeat center/cover;}
+		.photo-2 { background: url(../img/events/jade/photos/2.jpg) no-repeat center/cover;}
+		.photo-3 { background: url(../img/events/jade/photos/3.jpg) no-repeat center/cover;}
+		
+		.photo {
+			height: 100%;
+			
+			@media (max-width: $break-medium) and (orientation: portrait) {
+				height: 50vh;
+			}
+		}
+
+		.button {
+			color: $jade-mint;
+		}
+	}
+	
+	.footer {
+		background: $jade-dark;
+	}
+	
+	.card {
+		a {
+			@extend .fade-on-hover;
+			font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+			font-size: 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 50%;
+			
+			&:first-child {
+				background: $jade-light;
+			}
+			
+			&:nth-child(2) {
+				background: $jade-mint;
+			}
+		}
+	}
+	
+	background: #333 !important;
+}
+
+.jade-splash {
+	flex-direction: column;
+	justify-content: space-between;
+	background: $jade-dark url(../img/events/jade/photos/splash-background.jpg) no-repeat center/cover;
+	
+	.jade-splash-logo {
+		width: 100%;
+		height: 50rem;
+		background: url(../img/events/jade/logos/jade-logo.svg) no-repeat center / 40%;
+		
+		@media (max-width: $break-medium) and (orientation: portrait) {
+			width: 50rem;
+		}
+	}
+	
+	.jade-splash-subtitle {
+		width: 90%;
+		height: 5rem;
+		background: url(../img/events/jade/logos/subtitle-light.svg) no-repeat center;
+	}
+	
+	p {
+		color: $jade-mint;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 0.25rem;
+		font-size: 0.75rem;
+		opacity: 0.6;
+		text-align: center;
+	}
+}
+
+.jade-ticket {
+	@extend .fade-on-hover;
+	height: 15rem;
+	background: $jade-mint url(../img/events/jade/logos/get-tickets-now.svg) no-repeat center/contain;
+	background-origin: content-box;
+	padding: 2.5rem 2.5rem 2.5rem 5.5rem;
+	
+	@media (max-width: $break-medium) and (orientation: portrait) {
+		height: 100vw;
+		background: $jade-mint url(../img/events/city-of-stars/get-tickets-now-horizontal.svg) no-repeat center/contain;
+		background-origin: content-box;
+		padding: 1rem;
+	}
+}
+
+.jade-pink-bg {
+	background-color: $jade-mint;
+	color: $jade-dark;
+}
+
+.jade-beige-bg {
+	background-color: $jade-light;
+	color: $jade-dark;
+}
+
+.jade-redirect {
+	height: auto;
+	
+	a {
+		@extend .fade-on-hover;
+		padding: 20vh 4rem;
+		text-align: center;
+		
+		&:nth-child(1) {
+			background: $jade-mint;
+		}
+		&:nth-child(2) {
+			background: $jade-light;
+		}
+	}
+}

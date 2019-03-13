@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42637034-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-42637034-5');
+</script>
+<meta charset="UTF-8">
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>Oxford Asia-Pacific Society</title>
+<!-- TemplateEndEditable -->
+<link rel="icon" href="../res/img/logo/favicon.ico" type="image/x-icon"/>
+<link href="../res/css/normalize.6.0.0.min.css" rel="stylesheet" type="text/css">
+<link href="../res/css/base.1.0.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Formed in 1999, the Oxford Asia-Pacific Society (OUAPS) hosts a variety of popular social, cultural and career events in Oxford University.">
+<meta name="keywords" content="oxford,university,asia,pacific,society">
+<meta name="author" content="OUAPS">
+<!-- TemplateBeginEditable name="head" -->
+</head>
+<body>
+<!-- TemplateEndEditable -->
+
+<div id="navigation">
+   	<a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/events">Events</a>
+    <a href="/speakers">Speakers</a>
+    <a href="/join">Join</a>
+</div>
+
+<div id="menu-banner" style="{% if page.hide_menu_background %}background: none;{% endif %}">
+		<div id="menu-icon">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<p>Menu</p>
+</div>
+
+<!-- TemplateBeginEditable name="body" -->
+
+<!-- TemplateEndEditable -->
+
+<div class="section footer blue-bg">
+	<div class="l-1-3 splash-primary-logo-black"></div>
+	<div class="l-1-3 text">
+		<h2>Contact</h2>
+		<a href="mailto:contact@ouaps.co.uk" class="button">contact@ouaps.co.uk</a>
+		<a href="https://www.facebook.com/oxfordaps/" class="button">https://www.facebook.com/oxfordaps/</a>
+		<p>© Oxford University Asia-Pacific Society 1999-2018</p>
+	</div>
+	<div class="l-1-3 text">
+		<h2>Sitemap</h2>
+		<a href="/" class="button">Homepage</a>
+		<a href="/about" class="button">About us</a>
+		<a href="/events" class="button">Our events</a>
+		<a href="/speakers" class="button">Past speakers</a>
+		<a href="/join" class="button">Join us</a>
+	</div>
+</div>
+
+<script type="text/javascript" src="../res/js/jquery.3.2.0.min.js"></script>
+<script type="text/javascript" src="../res/js/base.1.0.js"></script>
+</body>
+</html>
