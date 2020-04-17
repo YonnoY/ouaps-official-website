@@ -1,11 +1,11 @@
-/about pages/about.html 200
-/events pages/events.html 200
-/speakers pages/speakers.html 200
+/about        /pages/about.html         200
+/events       /pages/events.html        200
+/speakers     /pages/speakers.html      200
 
-/join http://eepurl.com/dd0BLX 200
+/join         http://eepurl.com/dd0BLX  200
 
-/stars pages/stars2017.html 200
-/stars2017 pages/stars2017.html 200
-/stars2017-redirect pages/stars2017-redirect.html 200
-/stars2017-transport https://docs.google.com/forms/d/e/1FAIpQLSfAeI7oRsDOaBG7jeh5VFa4jw5uej-Ou04F9pNf-F7eck8erA/viewform 200
-/jade2018 pages/jade2018.html 200
+/stars        /pages/stars2017.html     200
+/stars2017    /pages/stars2017.html     200
+/stars2017-redirect /pages/stars2017-redirect.html  200
+/stars2017-transport https://docs.google.com/forms/d/e/1FAIpQLSfAeI7oRsDOaBG7jeh5VFa4jw5uej-Ou04F9pNf-F7eck8erA/viewform  200
+/jade2018     /pages/jade2018.html      200
